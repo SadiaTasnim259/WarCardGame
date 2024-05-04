@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var playerCard = "card2"
+    @State var CPUCard = "card4"
+    
+    @State var playerScore = 0
+    @State var CPUScore = 0
+    
     var body: some View {
         ZStack {
             Image("background-plain")
@@ -21,16 +28,16 @@ struct ContentView: View {
                 
                 HStack {
                     Spacer()
-                    Image("card2")
+                    Image(playerCard)
                     Spacer()
-                    Image("card3")
+                    Image(CPUCard)
                     Spacer()
                 }
                 
                 Spacer()
                 
                 Button {
-                    
+                    randomNumber()
                 } label: {
                     Image("button")
                 }
@@ -44,7 +51,7 @@ struct ContentView: View {
                              .font(.system(size: 28, weight: .medium, design: .default))
                             //.font(.headline)
                             .padding(.bottom, 10)
-                        Text("0")
+                        Text(String(playerScore))
                             .font(.system(size: 35, weight: .medium, design: .default))
                     }
                     
@@ -54,7 +61,7 @@ struct ContentView: View {
                         Text("CPU")
                             .font(.system(size: 28, weight: .medium, design: .default))
                             .padding(.bottom, 10)
-                        Text("0")
+                        Text(String(CPUScore))
                             .font(.system(size: 35, weight: .medium, design: .default))
                     }
                     
@@ -64,6 +71,23 @@ struct ContentView: View {
                 
                 Spacer()
             }
+        }
+    }
+    
+    func randomNumber(){
+        var playerCardValue = Int.random(in: 2...14)
+        playerCard = "card" + String(playerCardValue)
+        
+        var CPUCardValue = Int.random(in: 2...14)
+        CPUCard = "card" + String(CPUCardValue)
+        
+        if playerCardValue > CPUCardValue{
+            playerScore += 1
+        }else if CPUCardValue > playerCardValue{
+            CPUScore += 1
+        }else if CPUCardValue == playerCardValue{
+            playerScore += 0
+            CPUScore += 0
         }
     }
 }
