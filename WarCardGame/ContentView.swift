@@ -39,18 +39,21 @@ struct ContentView: View {
                 
                 HStack {
                     Spacer()
-                    VStack(spacing:25) {
+                    VStack {
                         Text("Player")
-                            .font(.system(size: 28, weight: .medium, design: .default))
+                             .font(.system(size: 28, weight: .medium, design: .default))
+                            //.font(.headline)
+                            .padding(.bottom, 10)
                         Text("0")
                             .font(.system(size: 35, weight: .medium, design: .default))
                     }
                     
                     Spacer()
                     
-                    VStack(spacing:25) {
+                    VStack{
                         Text("CPU")
                             .font(.system(size: 28, weight: .medium, design: .default))
+                            .padding(.bottom, 10)
                         Text("0")
                             .font(.system(size: 35, weight: .medium, design: .default))
                     }
